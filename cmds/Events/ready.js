@@ -6,7 +6,6 @@ module.exports["data"] = {
         once: true
     }),
     /**
-     * 
      * @param {Erine} client 
      */
     async code(client) {

@@ -1,4 +1,4 @@
-const { CommandBuilder, Plugins, Context } = require("erine");
+const { CommandBuilder, Plugins, Context, ActionRowBuilder, ButtonBuilder } = require("erine");
 
 module.exports["data"] = {
     data:  new CommandBuilder({

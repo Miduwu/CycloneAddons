@@ -1,7 +1,7 @@
 const { Erine, HelpCommand, ActivityType } = require("erine");
 const { Utils } = require("./addons/utils")
 
-require("dotenv")()
+require('dotenv').config();
 
 const bot = new Erine({
     prefix: "dank!",
