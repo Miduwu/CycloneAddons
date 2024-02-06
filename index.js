@@ -11,7 +11,7 @@ const bot = new Erine({
     guildOnly: true,
     intents: ["Guilds", "GuildMembers", "MessageContent", "GuildMessages"],
     presence: {
-        activities: [{ state: "Por un DankBlack transformado!", type: ActivityType.Watching, name: "Unión por la Transformación" }]
+        activities: [{ type: ActivityType.Playing, name: "Cyclone Addons | Under Maintenance" }]
     }
 })
 
