@@ -22,21 +22,19 @@ module.exports["data"] = {
         console.log("OKS")
         const botId = i.fields.getField("ID_ID").value
         const botUser =  await i.client.users.fetch(botId).catch(e=>null);
-        if(!botUser) return i.reply({ content: "El bot proporcionado no existe o el ID es incorrecto.", ephemeral: true });
-
+        if(!botUser) return i.reply({ content: "El bot proporcionado no existe o el ID es incorrecto.", ephemeral: true })
         const embed = new EmbedBuilder()
-        .setTitle("| Bot Enlistado")
-        .setAuthor({ name: i.user.username, iconURL: i.user.displayAvatarURL()})
-        .setFooter({ text: botUser.username, iconURL: botUser.displayAvatarURL() })
-        .setColor(Auxiliar.Colors.yellow)
-        .addFields({ name: "Prefix",  value: i.fields.getField("ID_PREFIX").value })
-        .addFields({ name: "Descripción", value:  i.fields.getField("ID_DESC").value });
+        .setTitle("<:cyaddons_warn:1057720067783135363> | Bot Enlistado")
+        .setFooter({ text: `Propietario | ${i.user.username}`, iconURL: i.user.displayAvatarURL()})
+        .setAuthor({ name: botUser.username, iconURL: botUser.displayAvatarURL() })
+        .setColor("FFFFFF")
+        .addFields({ name: "<:cyaddons_arrow:1059628448785645659> | Prefijo",  value: i.fields.getField("ID_PREFIX").value })
+        .addFields({ name: "<:cyaddons_info:1056809248337707058> | Descripción", value:  i.fields.getField("ID_DESC").value });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
-            .setLabel("Invitar")
+            .setLabel("Invitar Al Servidor")
             .setStyle(5)
-            .setEmoji("📨")
             .setURL(INVITE_URL.replace("{id}", botUser.id))
         );
 
