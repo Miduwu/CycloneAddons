@@ -18,7 +18,7 @@ module.exports["data"] = {
      */
     async code(ctx) {
         try {
-        let evaled = eval(`${ctx.get("código")}`)
+        let evaled = eval(`${ctx.message.content}`)
         ctx.send(evaled)
         } catch(error) {
             ctx.send(error)
