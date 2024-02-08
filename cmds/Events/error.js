@@ -19,5 +19,7 @@ module.exports["data"] = {
             return await error.ctx.send(`Necesitas proporcionarle un valor al parametro \`${error.param.name}\``)
         else if(error instanceof Errors.MissingPermission)
             return await error.ctx.send(`Necesitas de los permisos (${error.permissions.join(", ")}) para poder ejecutar el comando.`)
+        else
+            console.log(error)
     }
 }

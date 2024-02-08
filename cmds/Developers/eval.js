@@ -8,20 +8,21 @@ module.exports["data"] = {
     data:  new CommandBuilder({
         name: "eval",
         aliases: ["try"],
-        description:  "Evalúa un código de JavaScript.",
+        description:  "Evalúa un código de JavaScript."
     }),
     plugins: [Plugins.isOwner],
     params: new ParamsBuilder()
-    .addString({ name: "código", description: "El código a evaluar", required: true }),
+    .addString({ name: "código", description: "El código a evaluar", required: true, ellipsis: true }),
     /**
      * @param {Context} ctx
      */
     async code(ctx) {
+        let c = ctx.message.content.replace("dank!eval", "")
         try {
-        let evaled = eval(`${ctx.get("código")}`)
-        ctx.send(evaled)
+        let evaled = eval(c)
+        ctx.send(evaled.toString())
         } catch(error) {
-            ctx.send(error)
+            ctx.send(error.toString().slice(0, 1000))
         }
     }
 }

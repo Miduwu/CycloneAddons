@@ -9,7 +9,6 @@ module.exports["data"] = {
      * @param {ButtonInteraction} i 
      */
     async code(i) {
-        console.log("YES")
         const ID_Input = new TextInputBuilder()
         .setCustomId("ID_ID")
         .setLabel("ID del bot")

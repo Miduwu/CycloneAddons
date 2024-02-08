@@ -19,21 +19,23 @@ module.exports["data"] = {
      * @param {ModalSubmitInteraction} i 
      */
     async code(i) {
-        console.log("OKS")
         const botId = i.fields.getField("ID_ID").value
         const botUser =  await i.client.users.fetch(botId).catch(e=>null);
         if(!botUser) return i.reply({ content: "El bot proporcionado no existe o el ID es incorrecto.", ephemeral: true })
+        if(!botUser.bot) return i.reply({ content: "El usuario proporcionado no es un bot.", ephemeral: true })
+        let possibleMember = i.guild.members.cache.get(botUser.id)
+        if(possibleMember) return i.reply({ content: "El bot proporcioando ya se encuentra en el servidor.", ephemeral: true })
         const embed = new EmbedBuilder()
         .setTitle("<:cyaddons_warn:1057720067783135363> | Bot Enlistado")
         .setFooter({ text: `Propietario | ${i.user.username}`, iconURL: i.user.displayAvatarURL()})
         .setAuthor({ name: botUser.username, iconURL: botUser.displayAvatarURL() })
-        .setColor("FFFFFF")
+        .setColor(Auxiliar.Colors.white)
         .addFields({ name: "<:cyaddons_arrow:1059628448785645659> | Prefijo",  value: i.fields.getField("ID_PREFIX").value })
         .addFields({ name: "<:cyaddons_info:1056809248337707058> | Descripción", value:  i.fields.getField("ID_DESC").value });
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
-            .setLabel("Invitar Al Servidor")
+            .setLabel("Invitar al Servidor")
             .setStyle(5)
             .setURL(INVITE_URL.replace("{id}", botUser.id))
         );
