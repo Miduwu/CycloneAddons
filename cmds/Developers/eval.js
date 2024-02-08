@@ -19,7 +19,7 @@ module.exports["data"] = {
     async code(ctx) {
         let c = ctx.message.content.replace("dank!eval", "")
         try {
-        let evaled = eval(c)
+        let evaled = eval(c);
         ctx.send(evaled.toString())
         } catch(error) {
             ctx.send(error.toString().slice(0, 1000))
