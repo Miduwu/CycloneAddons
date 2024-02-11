@@ -1,5 +1,5 @@
-const { EventBuilder, Erine, Errors } = require("erine");
-
+const { EventBuilder, Erine, EmbedBuilder, Errors } = require("erine");
+const { Auxiliar } = require("../../index")
 module.exports["data"] = {
     data: new EventBuilder({
         name: "error"
@@ -14,7 +14,7 @@ module.exports["data"] = {
         else if(error instanceof Errors.InvalidParamMember)
             return await error.ctx.send(`El parametro \`${error.param.name}\` debe ser un miembro de **${error.ctx.guild.name}**.`)
         else if(error instanceof Errors.NotOwner)
-            return await error.ctx.send(`No eres desarrollador de este bot.`)
+            return await error.ctx.send(new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | No tienes permitido usar esto.***").setColor(Auxiliar.Colors.red))
         else if(error instanceof Errors.MissingRequiredParam)
             return await error.ctx.send(`Necesitas proporcionarle un valor al parametro \`${error.param.name}\``)
         else if(error instanceof Errors.MissingPermission)
