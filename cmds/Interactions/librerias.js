@@ -2,7 +2,7 @@ const { InteractionBuilder, Interactions, StringSelectMenuInteraction} = require
 
 module.exports["data"] = {
     data: new InteractionBuilder({
-        name: "ID_DROPDOWNS",
+        name: "ID_DROPDOWN",
         type: Interactions.StringSelectMenu
     }),
     /**
