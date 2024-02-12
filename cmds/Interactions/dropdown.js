@@ -13,7 +13,7 @@ module.exports["data"] = {
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
             if(i.member.roles.cache.has(roleId)) {
-                interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan)]})
+                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan)]})
                 await i.member.roles.remove(role)
             }
             else {
@@ -21,6 +21,6 @@ module.exports["data"] = {
                 await i.member.roles.add(role)
             };
         }
-        return i.reply({ content: msgs.join("\n"), ephemeral: true })
+        return i.reply({ embeds: msgs.join("\n"), ephemeral: true })
     }
 }
