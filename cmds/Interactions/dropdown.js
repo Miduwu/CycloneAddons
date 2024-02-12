@@ -17,10 +17,10 @@ module.exports["data"] = {
                 await i.member.roles.remove(role)
             }
             else {
-                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.red)]})
+                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red)]})
                 await i.member.roles.add(role)
             };
         }
-        return i.reply({ embeds: msgs.join("\n"), ephemeral: true })
+        return i.reply({ embeds: [msgs.join("\n")], ephemeral: true })
     }
 }
