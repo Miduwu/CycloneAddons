@@ -1,8 +1,8 @@
-const { InteractionBuilder, Interactions, StringSelectMenuInteraction} = require("erine");
-
+const { InteractionBuilder, Interactions, StringSelectMenuInteraction, EmbedBuilder } = require("erine");
+const { Auxiliar } = require("../../index")
 module.exports["data"] = {
     data: new InteractionBuilder({
-        name: "ID_DROPDOWN",
+        name: "ID_DROPDOWNS",
         type: Interactions.StringSelectMenu
     }),
     /**
@@ -13,11 +13,11 @@ module.exports["data"] = {
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
             if(i.member.roles.cache.has(roleId)) {
-                msgs.push(`Se te removió el rol ${role}`)
+                interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan)]})
                 await i.member.roles.remove(role)
             }
             else {
-                msgs.push(`Se te concedió el rol ${role}`)
+                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.red)]})
                 await i.member.roles.add(role)
             };
         }
