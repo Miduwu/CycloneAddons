@@ -13,11 +13,11 @@ module.exports["data"] = {
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
             if(i.member.roles.cache.has(roleId)) {
-                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan)]})
+                msgs.push(new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan))
                 await i.member.roles.remove(role)
             }
             else {
-                msgs.push({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red)]})
+                msgs.push(new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red))
                 await i.member.roles.add(role)
             };
         }
