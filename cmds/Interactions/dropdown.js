@@ -1,3 +1,4 @@
+
 const { InteractionBuilder, Interactions, StringSelectMenuInteraction, EmbedBuilder } = require("erine");
 const { Auxiliar } = require("../../index")
 module.exports["data"] = {
@@ -9,24 +10,19 @@ module.exports["data"] = {
      * @param {StringSelectMenuInteraction} i 
      */
     async code(i) {
-        let [added, removed] = [[], []]
+        let msgs = []
+        let e;
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
             if(i.member.roles.cache.has(roleId)) {
-                removed.push(role.mention)
+                e = new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan);
                 await i.member.roles.remove(role)
             }
             else {
-                added.push(role.mention)
+                e = new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red);
                 await i.member.roles.add(role)
             };
         }
-        const AddedEmbed = new EmbedBuilder()
-        .setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***")
-        .setColor(Auxiliar.Colors.cyan)
-        const RemovedEmbed = new EmbedBuilder()
-        .setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***")
-        .setColor(Auxiliar.Colors.red)
-        return i.reply({ embeds: [AddedEmbed, RemovedEmbed], ephemeral: true })
+        return i.reply({ embeds: [e], ephemeral: true })
     }
 }
