@@ -9,18 +9,24 @@ module.exports["data"] = {
      * @param {StringSelectMenuInteraction} i 
      */
     async code(i) {
-        let msgs = []
+        let [added, removed] = [[], []]
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
             if(i.member.roles.cache.has(roleId)) {
-                msgs.push(new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan))
+                added.push(role.mention)
                 await i.member.roles.remove(role)
             }
             else {
-                msgs.push(new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red))
+                removed.push(role.mention)
                 await i.member.roles.add(role)
             };
         }
-        return i.reply({ embeds: [msgs.join("\n")], ephemeral: true })
+        const AddedEmbed = new EmbedBuilder()
+        .setDescription(added.length ? `<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***`: "<:cyaddons_warn:1057720067783135363> | ***No se añadió ningun rol.***")
+        .setColor(Auxiliar.Colors.cyan)
+        const RemovedEmbed() = new EmbedBuilder()
+        .setDescription(removed.length ? `<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***`: "<:cyaddons_warn:1057720067783135363> | ***No se removió ningun rol.***")
+        .setColor(Auxiliar.Colors.red)
+        return i.reply({ embeds: [AddedEmbed, RemovedEmbed], ephemeral: true })
     }
 }
