@@ -14,13 +14,13 @@ module.exports["data"] = {
         let e;
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
-            if(i.member.roles.cache.has(roleId)) {
+            if(!i.member.roles.cache.has(roleId)) {
                 e = new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan);
-                await i.member.roles.remove(role)
+                await i.member.roles.add(role)
             }
             else {
                 e = new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***").setColor(Auxiliar.Colors.red);
-                await i.member.roles.add(role)
+                await i.member.roles.remove(role)
             };
         }
         return i.reply({ embeds: [e], ephemeral: true })
