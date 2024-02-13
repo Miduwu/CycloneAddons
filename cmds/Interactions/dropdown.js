@@ -22,10 +22,10 @@ module.exports["data"] = {
             };
         }
         const AddedEmbed = new EmbedBuilder()
-        .setDescription(added.length ? `<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***`)
+        .setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***")
         .setColor(Auxiliar.Colors.cyan)
         const RemovedEmbed = new EmbedBuilder()
-        .setDescription(removed.length ? `<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***`)
+        .setDescription("<:cyaddons_minus:1057546000622964746> | ***Rol removido de tu lista.***")
         .setColor(Auxiliar.Colors.red)
         return i.reply({ embeds: [AddedEmbed, RemovedEmbed], ephemeral: true })
     }
