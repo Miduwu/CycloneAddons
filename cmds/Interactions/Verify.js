@@ -3,7 +3,7 @@ const { Auxiliar } = require("../../index")
 module.exports["data"] = {
 data: new InteractionBuilder({
 name: "verify_button",
-type: Interations.Button
+type: Interactions.Button
 }),
 async code(interaction) {
 let verifyrole = interaction.guild.roles.cache.get("917164283677278279") || await interaction.guild.roles.fetch("917164283677278279")
