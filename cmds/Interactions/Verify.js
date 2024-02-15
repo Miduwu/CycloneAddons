@@ -1,4 +1,4 @@
-const { EmbedBuilder, Interactions } = require("erine")
+const { EmbedBuilder, Interactions, InteractionBuilder } = require("erine")
 const { Auxiliar } = require("../../index")
 module.exports["data"] = {
 data: new InteractionBuilder({
