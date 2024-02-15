@@ -11,21 +11,21 @@ module.exports["data"] = {
     async code(i) {
         const ID_Input = new TextInputBuilder()
         .setCustomId("ID_ID")
-        .setLabel("ID del bot")
-        .setPlaceholder("Snowflake")
+        .setLabel("ID Del Bot")
+        .setPlaceholder("La ID del bot que añadirás.")
         .setRequired(true)
         .setStyle(TextInputStyle.Short);
 
         const PREFIX_Input = new TextInputBuilder()
         .setCustomId("ID_PREFIX")
         .setLabel("Prefijo")
-        .setPlaceholder("El prefijo del bot o / si es con slash")
+        .setPlaceholder("El prefijo del bot. (Pon \"/\" si usa Slash)")
         .setRequired(true)
         .setStyle(TextInputStyle.Short);
 
         const DESC_Input = new TextInputBuilder()
         .setCustomId("ID_DESC")
-        .setLabel("Descripción del bot")
+        .setLabel("Descripción")
         .setPlaceholder("Características del bot, lenguaje/librería de programación, etc.")
         .setRequired(true)
         .setStyle(TextInputStyle.Paragraph)
@@ -33,7 +33,7 @@ module.exports["data"] = {
         const [row1, row2, row3] = [new ActionRowBuilder().addComponents(ID_Input), new ActionRowBuilder().addComponents(PREFIX_Input), new ActionRowBuilder().addComponents(DESC_Input)]
 
         const modal = new ModalBuilder()
-        .setTitle("Añade tu bot")
+        .setTitle("Añadir Bot")
         .setCustomId("ID_ADDBOT_MODAL")
         .addComponents(row1, row2, row3)
 
