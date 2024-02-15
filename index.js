@@ -12,7 +12,7 @@ const bot = new Erine({
     guildOnly: true,
     intents: ["Guilds", "GuildMembers", "MessageContent", "GuildMessages"],
     presence: {
-        activities: [{ type: ActivityType.Playing, name: "Cyclone Addons | Under Maintenance" }]
+        activities: [{ type: ActivityType.Playing, name: "Cyclone Addons | ErineClient" }]
     }
 })
 
