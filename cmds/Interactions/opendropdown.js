@@ -65,7 +65,7 @@ name: "colors",
 type: Interactions.Button
 }),
 async code(interaction) {
-await interaction.reply({embeds: [new EmbedBuilder().setTitle("").setDescription("<:cyaddons_dbwarning:1208648325814030427> | ***`Esta categoría no está disponible.`***").setColor("FF46DA")], ephemeral: true})
+await interaction.reply({embeds: [new EmbedBuilder().setTitle("<:cyaddons_dbcolors:1208647907281080370> | Colores").setDescription("<:cyaddons_dbwarning:1208648325814030427> | ***`Esta categoría no está disponible.`***").setColor("FF46DA")], ephemeral: true})
 }
 },{
 data: new InteractionBuilder({
