@@ -15,9 +15,9 @@ Neutral: "917435095172911135"
             .addComponents(new StringSelectMenuBuilder()
                 .setCustomId("ID_DROPDOWNS")
                 .setPlaceholder("Selecciona Tu Género")
-      .addOptions(new StringSelectMenuOptionBuilder().setLabel("Femenino").setValue(Roles.Female).setEmoji("<:cyaddons_female:1097701202457788516> "),
-new StringSelectMenuOptionBuilder().setLabel("Masculino").setValue(Roles.Male).setEmoji("<:cyaddons_male:1097701261362606190> "),
-new StringSelectMenuOptionBuilder().setLabel("No Identificado").setValue(Roles.Neutral).setEmoji("<:cyaddons_nonbinary:1097701322788184107>")))
+      .addOptions(new StringSelectMenuOptionBuilder().setLabel("Femenino").setValue(roles.Female).setEmoji("<:cyaddons_female:1097701202457788516> "),
+new StringSelectMenuOptionBuilder().setLabel("Masculino").setValue(roles.Male).setEmoji("<:cyaddons_male:1097701261362606190> "),
+new StringSelectMenuOptionBuilder().setLabel("No Identificado").setValue(roles.Neutral).setEmoji("<:cyaddons_nonbinary:1097701322788184107>")))
 let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_dbgenders:1208608303819661332> | Géneros")
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona tu género para evitar confusiones.`***")
