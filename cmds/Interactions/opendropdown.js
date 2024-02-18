@@ -69,7 +69,7 @@ await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_
 }
 },{
 data: new InteractionBuilder({
-name: "colors",
+name: "nsfw",
 type: Interactions.Button
 }),
 async code(interaction) {
@@ -80,6 +80,6 @@ let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_nsfw:1206059710382608394> | Acceso NSFW")
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Pulsa el botón para ver el canal de pruebas NSFW.`***")
 .setColor("FF00EE")
-await interaction.reply({ embeds: [embed], components: [row] })
+await interaction.reply({ embeds: [embed], components: [row], ephemeral: true})
 }
 }]
