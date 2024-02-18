@@ -23,6 +23,7 @@ module.exports["data"] = {
                 await i.member.roles.remove(role.id)
             };
         }
+        await i.deferReply()
         return i.reply({ embeds: [e], ephemeral: true })
     }
 }
