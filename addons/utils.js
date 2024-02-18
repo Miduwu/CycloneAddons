@@ -4,7 +4,8 @@ const COLORS = {
     green:  "59B46A",
     yellow: "FDBD44",
     white:  "FFFFFF",
-    blurple:"0099FF",
+    pink:   "FF8FEC",
+    blurple:"0099FF"
 }
 
 class Utils {
