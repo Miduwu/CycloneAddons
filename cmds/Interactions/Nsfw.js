@@ -2,7 +2,7 @@ const { Interactions, InteractionBuilder, EmbedBuilder } = require("erine")
 const { Auxiliar } = require("../../index")
 module.exports["data"] = {
 data: new InteractionBuilder({
-name: "nsfwaccess",
+name: "nsfw",
 type: Interactions.Button
 }),
 async code(interaction) {
