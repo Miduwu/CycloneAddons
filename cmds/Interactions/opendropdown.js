@@ -38,4 +38,5 @@ let embed = new EmbedBuilder()
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona una mención para evitar el uso de @everyone.`***")
 .setColor(Auxiliar.Colors.pink)
  await interaction.reply({embeds: [embed], components: [row], ephemeral: true})
+}
 }]
