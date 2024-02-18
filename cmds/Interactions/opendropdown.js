@@ -67,19 +67,4 @@ type: Interactions.Button
 async code(interaction) {
 await interaction.reply({embeds: [new EmbedBuilder().setTitle("<:cyaddons_dbcolors:1208647907281080370> | Colores").setDescription("<:cyaddons_dbwarning:1208648325814030427> | ***`Esta categoría no está disponible.`***").setColor("FF46DA")], ephemeral: true})
 }
-},{
-data: new InteractionBuilder({
-name: "nsfw",
-type: Interactions.Button
-}),
-async code(interaction) {
-let row = new ActionRowBuilder()
-.addComponents(new ButtonBuilder().setLabel("Obtener Acceso").setCustomId("nsfwaccess").setStyle(2).setEmoji("<:cyaddons_dbwarning:1208648325814030427>")
-)
-let embed = new EmbedBuilder()
-.setTitle("<:cyaddons_nsfw:1206059710382608394> | Acceso NSFW")
-.setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Pulsa el botón para ver el canal de pruebas NSFW.`***")
-.setColor("FF00EE")
-await interaction.reply({ embeds: [embed], components: [row], ephemeral: true})
-}
 }]
