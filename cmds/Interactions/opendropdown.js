@@ -7,12 +7,13 @@ name: "genders",
 type: Interactions.Button
 }),
 async code(interaction) {
+        if(interaction.member.roles.cache.has(roles.Famale || roles.Male || roles.Neutral)) return await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_dbwarning:1208648325814030427> | ***`Ya posees un rol de género.`***").setColor("FF46DA")], components: [new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Remover Mi Rol Actual").setCustomId("deletegender").setStyle(2).setEmoji("<:cyaddons_dberror:1208648660779270164>"))]})
         let row = new ActionRowBuilder()
             .addComponents(new StringSelectMenuBuilder()
                 .setCustomId("ID_DROPDOWNS")
                 .setPlaceholder("Selecciona Tu Género")
-      .addOptions(new StringSelectMenuOptionBuilder().setLabel("Femenino").setValue(roles.Female).setEmoji("<:cyaddons_female:1097701202457788516> "),
-new StringSelectMenuOptionBuilder().setLabel("Masculino").setValue(roles.Male).setEmoji("<:cyaddons_male:1097701261362606190> "),
+      .addOptions(new StringSelectMenuOptionBuilder().setLabel("Femenino").setValue(roles.Female).setEmoji("<:cyaddons_female:1097701202457788516>"),
+new StringSelectMenuOptionBuilder().setLabel("Masculino").setValue(roles.Male).setEmoji("<:cyaddons_male:1097701261362606190>"),
 new StringSelectMenuOptionBuilder().setLabel("No Identificado").setValue(roles.Neutral).setEmoji("<:cyaddons_nonbinary:1097701322788184107>")))
 let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_dbgenders:1208608303819661332> | Géneros")
