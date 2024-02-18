@@ -7,7 +7,7 @@ name: "genders",
 type: Interactions.Button
 }),
 async code(interaction) {
-        if(interaction.member.roles.cache.has(roles.Famale || roles.Male || roles.Neutral)) return await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_warn:1057720067783135363> | ***Ya posees un rol de género.***").setColor(Auxiliar.Colors.red)], components: [new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Remover").setCustomId("deletegender").setStyle(2).setEmoji("<:cyaddons_minus:1057546000622964746>"))], ephemeral: true})
+        if(interaction.member.roles.cache.has(roles.Famale || roles.Male || roles.Neutral)) return await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_warn:1057720067783135363> | ***`Ya posees un rol de género.`***").setColor(Auxiliar.Colors.red)], components: [new ActionRowBuilder().addComponents(new ButtonBuilder().setLabel("Remover").setCustomId("deletegender").setStyle(2).setEmoji("<:cyaddons_minus:1057546000622964746>"))], ephemeral: true})
         let row = new ActionRowBuilder()
             .addComponents(new StringSelectMenuBuilder()
                 .setCustomId("ID_DROPDOWNS")
