@@ -14,7 +14,7 @@ module.exports["data"] = {
         let e;
         for(const roleId of i.values) {
             let role = i.guild.roles.cache.get(roleId) || await i.guild.roles.fetch(roleId).catch(() => null);
-            if(!i.member.roles.cache.has(roleId.id)) {
+            if(!i.member.roles.cache.has(role.id)) {
                 e = new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan);
                 await i.member.roles.add(role.id)
             }
