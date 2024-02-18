@@ -75,6 +75,6 @@ type: Interactions.Button
 }),
 async code(interaction) {
 await interaction.member.roles.remove(roles.Male) || await interaction.member.roles.remove(roles.Neutral) || await interaction.member.roles.remove(roles.Female)
-await interaction.update({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***`Rol removido de tu lista.`***").setColor(Auxiliar.Colors.red)], components: []})
+await interaction.editReply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_minus:1057546000622964746> | ***`Rol removido de tu lista.`***").setColor(Auxiliar.Colors.red)], components: []})
 }
 }]
