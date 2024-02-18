@@ -22,6 +22,7 @@ let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_dbgenders:1208608303819661332> | Géneros")
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona tu género para evitar confusiones.`***")
 .setColor(Auxiliar.Colors.pink)
+ await interaction.reply({embeds: [embed], components: [row]})
  }
   },{
 data: new InteractionBuilder({
