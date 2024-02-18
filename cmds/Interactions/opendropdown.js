@@ -1,6 +1,6 @@
 const { Interactions, ActionRowBuilder, ButtonBuilder, StringSelectMenuOptionBuilder, StringSelectMenuBuilder, InteractionBuilder, EmbedBuilder } = require("erine")
 const { Auxiliar } = require("../../index")
-let roles = { Female: "917435110591189052", Male: "917435094409564230", Neutral: "917435095172911135", Revive: "1208617632237101137", Anuncios: "917659645382901810", Alianzas: "919702909346803843" }
+let roles = { Female: "917435110591189052", Male: "917435094409564230", Neutral: "917435095172911135", Revive: "1208617632237101137", Anuncios: "917659645382901810", Alianzas: "919702909346803843", AOIJS: "917210559324229643", BDFD: "917210550843355156", DJS: "917210532052873236", DPY: "966429903379648552"}
 module.exports["data"] = [{
 data: new InteractionBuilder({
 name: "genders",
@@ -38,5 +38,48 @@ let embed = new EmbedBuilder()
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona una mención para evitar el uso de @everyone.`***")
 .setColor(Auxiliar.Colors.pink)
  await interaction.reply({embeds: [embed], components: [row], ephemeral: true})
+}
+},{
+data: new InteractionBuilder({
+name: "libraries",
+type: Interactions.Button
+}),
+async code(interaction) {
+        let row = new ActionRowBuilder()
+            .addComponents(new StringSelectMenuBuilder()
+                .setCustomId("ID_DROPDOWNS")
+                .setPlaceholder("Selecciona Una Librería")
+      .addOptions(new StringSelectMenuOptionBuilder().setLabel("Bot Designer For Discord").setValue(roles.BDFD).setEmoji("<:cyaddons_bdfd:1057017084548235356>"),
+new StringSelectMenuOptionBuilder().setLabel("Aoi.js").setValue(roles.AOIJS).setEmoji("<:cyaddons_aoi:1204956333808418866>"),
+new StringSelectMenuOptionBuilder().setLabel("Discord.js").setValue(roles.DJS).setEmoji("<:cyaddons_djs:1208650942128586803>"),
+new StringSelectMenuOptionBuilder().setLabel("Discord.py").setValue(roles.DPY).setEmoji("<:cyaddons_dpy:1057016962791772200>"))
+let embed = new EmbedBuilder()
+.setTitle("<:cyaddons_dbscript:1208647931704639578> | Librerías")
+.setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona tus librerías favoritas o de las que tengas conocimiento.`***")
+.setColor(Auxiliar.Colors.pink)
+ await interaction.reply({embeds: [embed], components: [row], ephemeral: true})
+}
+},{
+data: new InteractionBuilder({
+name: "colors",
+type: Interactions.Button
+}),
+async code(interaction) {
+await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_dbwarning:1208648325814030427> | ***`Esta categoría aún no está disponible.`***").setColor(Auxiliar.Colors.pink)], ephemeral: true})
+}
+},{
+data: new InteractionBuilder({
+name: "colors",
+type: Interactions.Button
+}),
+async code(interaction) {
+let row = new ActionRowBuilder()
+.addComponents(new ButtonBuilder().setLabel("Obtener Acceso").setCustomId("nsfwaccess").setStyle(2).setEmoji("<:cyaddons_dbwarning:1208648325814030427>")
+)
+let embed = new EmbedBuilder()
+.setTitle("<:cyaddons_nsfw:1206059710382608394> | Acceso NSFW")
+.setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Pulsa el botón para ver el canal de pruebas NSFW.`***")
+.setColor("FF00EE")
+await interaction.reply({ embeds: [embed], components: [row] })
 }
 }]
