@@ -52,7 +52,7 @@ async code(interaction) {
       .addOptions(new StringSelectMenuOptionBuilder().setLabel("Bot Designer For Discord").setValue(roles.BDFD).setEmoji("<:cyaddons_bdfd:1057017084548235356>"),
 new StringSelectMenuOptionBuilder().setLabel("Aoi.js").setValue(roles.AOIJS).setEmoji("<:cyaddons_aoi:1204956333808418866>"),
 new StringSelectMenuOptionBuilder().setLabel("Discord.js").setValue(roles.DJS).setEmoji("<:cyaddons_djs:1208650942128586803>"),
-new StringSelectMenuOptionBuilder().setLabel("Discord.py").setValue(roles.DPY).setEmoji("<:cyaddons_dpy:1057016962791772200>"))
+new StringSelectMenuOptionBuilder().setLabel("Discord.py").setValue(roles.DPY).setEmoji("<:cyaddons_dpy:1057016962791772200>")))
 let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_dbscript:1208647931704639578> | Librerías")
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona tus librerías favoritas o de las que tengas conocimiento.`***")
