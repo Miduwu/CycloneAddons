@@ -34,5 +34,7 @@ async code(interaction) {
   if(!interaction.member.roles.cache.has(nsfwRole)) {
     await interaction.member.roles.add(nsfwRole)
     await interaction.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_plus:1057545930443870208> | ***Rol añadido a tu lista.***").setColor(Auxiliar.Colors.cyan)], ephemeral: true})
- }
+  }
+}
+
 }]
