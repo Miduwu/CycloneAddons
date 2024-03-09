@@ -17,7 +17,7 @@ module.exports["data"] = {
      * @param {Context} ctx
      */
     async code(ctx) {
-        let c = ctx.message.content.replace("dank!eval", "")
+        let c = ctx.get("código")
         try {
         let evaled = eval(c);
         ctx.send(evaled.toString())
