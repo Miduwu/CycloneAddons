@@ -7,9 +7,6 @@ const { InteractionBuilder,
 } = require("erine");
 const { Auxiliar } = require("../../index");
 
-const INVITE_URL = "https://discord.com/api/oauth2/authorize?client_id={id}&permissions=0&scope=bot"
-const CHANNEL_ID = "965406359514406923"
-
 module.exports["data"] = {
     data: new InteractionBuilder({
         name: "ID_ADDBOT_MODAL",
@@ -20,28 +17,30 @@ module.exports["data"] = {
      */
     async code(i) {
         const botId = i.fields.getField("ID_ID").value
+        const INVITE_URL = `https://discord.com/api/oauth2/authorize?client_id=${botId}&permissions=0&scope=bot`
+        const CHANNEL_ID = "1206725863757058059"
         const botUser =  await i.client.users.fetch(botId).catch(e=>null);
-        if(!botUser) return i.reply({ content: "El bot proporcionado no existe o el ID es incorrecto.", ephemeral: true })
-        if(!botUser.bot) return i.reply({ content: "El usuario proporcionado no es un bot.", ephemeral: true })
+        if(!botUser) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`La ID no fue encontrada.`***").setColor(Auxiliar.Colors.red)]})], ephemeral: true })
+        if(!botUser.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)]})], ephemeral: true })
         let possibleMember = i.guild.members.cache.get(botUser.id)
-        if(possibleMember) return i.reply({ content: "El bot proporcioando ya se encuentra en el servidor.", ephemeral: true })
+        if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)]})], ephemeral: true })
         const embed = new EmbedBuilder()
-        .setTitle("<:cyaddons_warn:1057720067783135363> | Bot Enlistado")
-        .setFooter({ text: `Propietario | ${i.user.username}`, iconURL: i.user.displayAvatarURL()})
-        .setAuthor({ name: botUser.username, iconURL: botUser.displayAvatarURL() })
-        .setColor(Auxiliar.Colors.white)
-        .addFields({ name: "<:cyaddons_arrow:1059628448785645659> | Prefijo",  value: i.fields.getField("ID_PREFIX").value })
-        .addFields({ name: "<:cyaddons_info:1056809248337707058> | Descripción", value:  i.fields.getField("ID_DESC").value });
-
+        .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild.iconURL({size: 4096})}`})
+        .addFields({ text: `Propietario | ${i.user.username}`, value: `${botUser.username}`})
+        .setColor(Auxiliar.Colors.pink)
+        .setFooter({text: await i.bot.users.fetch(botId).username, iconURL: i.bot.users.fetch(botId).displayAvatarURL({size: 4096})})
+        .addFields({ name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: i.fields.getField("ID_PREFIX").value })
+        .addFields({ name: "<:cyaddons_dbinfo:1207745246331666442> | Descripción", value:  i.fields.getField("ID_DESC").value });
+        
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
-            .setLabel("Invitar al Servidor")
+            .setLabel("Invitar Al Servidor")
             .setStyle(5)
-            .setURL(INVITE_URL.replace("{id}", botUser.id))
+            .setURL(INVITE_URL)
         );
 
         const channel =  i.guild.channels.cache.get(CHANNEL_ID);
         await channel.send({ embeds: [embed], components: [row] }).catch(console.log)
-        await i.reply({ content: "Ahora necesitas esperar a que un moderador apruebe tu bot! Suerte", ephemeral: true }).catch(console.log)
+        await i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dbverify:1207744901865938964> | ***`El bot se añadió a lista.`***").setColor(Auxiliar.Colors.pink)], ephemeral: true }).catch(console.log)
     }
 }
