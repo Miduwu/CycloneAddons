@@ -39,7 +39,7 @@ module.exports["data"] = {
             .setURL(INVITE_URL)
         );
 
-        const channel =  i.guild.channels.cache.get(CHANNEL_ID);
+        const channel =  await i.bot.channels.fetch(CHANNEL_ID);
         await channel.send({ embeds: [embed], components: [row] }).catch(console.log)
         await i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dbverify:1207744901865938964> | ***`El bot se añadió a lista.`***").setColor(Auxiliar.Colors.pink)], ephemeral: true }).catch(console.log)
     }
