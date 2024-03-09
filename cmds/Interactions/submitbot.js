@@ -20,10 +20,10 @@ module.exports["data"] = {
         const INVITE_URL = `https://discord.com/api/oauth2/authorize?client_id=${botId}&permissions=0&scope=bot`
         const CHANNEL_ID = "1206725863757058059"
         const botUser =  await i.client.users.fetch(botId).catch(e=>null);
-        if(!botUser) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`La ID no fue encontrada.`***").setColor(Auxiliar.Colors.red)]}), ephemeral: true })
-        if(!botUser.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)]}), ephemeral: true })
+        if(!botUser) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`La ID no fue encontrada.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
+        if(!botUser.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         let possibleMember = i.guild.members.cache.get(botUser.id)
-        if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)]}), ephemeral: true })
+        if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         const embed = new EmbedBuilder()
         .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild.iconURL({size: 4096})}`})
         .addFields({ text: `Propietario | ${i.user.username}`, value: `${botUser.username}`})
