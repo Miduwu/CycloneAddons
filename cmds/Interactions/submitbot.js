@@ -19,7 +19,7 @@ module.exports["data"] = {
         const botId = i.fields.getField("ID_ID").value
         const INVITE_URL = `https://discord.com/api/oauth2/authorize?client_id=${botId}&permissions=0&scope=bot`
         const CHANNEL_ID = "1206725863757058059"
-        const botUser =  await i.client.users.fetch(botId).catch(e=>null);
+        const botUser =  await i.bot.users.fetch(botId).catch(e=>null);
         if(!botUser) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`La ID no fue encontrada.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         if(!botUser.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         let possibleMember = i.guild.members.cache.get(botUser.id)
