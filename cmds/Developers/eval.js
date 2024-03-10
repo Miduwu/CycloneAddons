@@ -8,6 +8,7 @@ module.exports["data"] = {
     }),
     plugins: [Plugins.isOwner],
     params: new ParamsBuilder()
+    .setQuoted(false)
     .addString({ name: "código", description: "El código a evaluar.", required: true, ellipsis: true }),
     /**
      * @param {Context} ctx
