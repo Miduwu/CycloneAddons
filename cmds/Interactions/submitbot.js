@@ -13,17 +13,16 @@ module.exports["data"] = {
     }),
     async code(i) {
         const botId = i.fields.getField("ID_ID").value
-        const addbotchannel = i?.client?.channels?.cache?.get("1206725863757058059") || await i.client?.channels?.fetch("1206725863757058059")
-        const botUser = i.client?.users?.cache?.get(botId) || await i.client?.users?.fetch(botId).catch(e=>null)
-        console.log(i)
+        const addbotchannel = i?.bot?.channels?.cache?.get("1206725863757058059") || await i.bot?.channels?.fetch("1206725863757058059")
+        const botUser = i.bot?.users?.cache?.get(botId) || await i.bot?.users?.fetch(botId).catch(e=>null)
         if(!botUser?.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
-        let possibleMember = i.guild.members.cache.get(botUser?.id)
+        let possibleMember = i.guild?.members?.cache?.get(botUser?.id)
         if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         const embed = new EmbedBuilder()
         .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild.iconURL({size: 4096})}`})
-        .addFields({ text: `Propietario | ${i.user.username}`, value: `${i.user.username}`})
+        .addFields({ text: `Propietario | ${i.?user?.username}`, value: `${i?.user?.username}`})
         .setColor(Auxiliar.Colors.pink)
-        .setFooter({text: `${botUser.username}`, iconURL: `${botUser.displayAvatarURL({size: 4096})}`})
+        .setFooter({text: `${botUser?.username}`, iconURL: `${botUser?.displayAvatarURL({size: 4096})}`})
         .addFields({ name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: i.fields.getTextInputValue("ID_PREFIX")})
         .addFields({ name: "<:cyaddons_dbinfo:1207745246331666442> | Descripción", value:  i.fields.getTextInputValue("ID_DESC") });
         
