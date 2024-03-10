@@ -21,8 +21,10 @@ module.exports["data"] = {
         if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         const embed = new EmbedBuilder()
         .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild?.iconURL({size: 4096})}`})
-        .addFields({ name: `Propietario | ${i.user?.username}`, value: `${i.user?.username}`})
-        .setColor(Auxiliar.Colors.pink)
+        .setTitle(`<:cyaddons_dbmember:1212222400163221514> | Propietario`)
+        .setDescription(`- ***\`${i.user?.username}\`***`)
+        .setThumbnail(`${i.user.displayAvatarURL({size: 4096})}`)
+        .setColor("FF00EE")
         .setFooter({text: `${botUser?.username}`, iconURL: `${botUser?.displayAvatarURL({size: 4096})}`})
         .addFields({ name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: i.fields.getTextInputValue("ID_PREFIX")})
         .addFields({ name: "<:cyaddons_dbinfo:1207745246331666442> | Descripción", value:  i.fields.getTextInputValue("ID_DESC") });
