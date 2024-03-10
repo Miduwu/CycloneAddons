@@ -13,8 +13,8 @@ module.exports["data"] = {
     }),
     async code(i) {
         const botId = i.fields.getField("ID_ID").value
-        const addbotchannel = await i.bot.channels.fetch("1206725863757058059")
-        const botUser =  await i.bot.users.fetch(botId).catch(e=>null);
+        const addbotchannel = i.bot.channels.cache.get("1206725863757058059") || await i.bot.channels.fetch("1206725863757058059")
+        const botUser =  i.bot.users.cache.get(botId) || await i.bot.users.fetch(botId)
         if(!botUser) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`La ID no fue encontrada.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         if(!botUser.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         let possibleMember = i.guild.members.cache.get(botUser.id)
