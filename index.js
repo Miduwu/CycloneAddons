@@ -1,7 +1,14 @@
 const { Erine, ActivityType } = require("erine");
 const { Utils } = require("./addons/utils")
+const { Database } = require("midb")
 const { CustomHelpCommand } = require("./addons/help")
-
+const db = new Database({
+    path: "./database",
+    tables: ["main"]
+})
+db.on("ready", () => {
+    console.log("Database is ready.")
+})
 require('dotenv').config();
 
 const bot = new Erine({
