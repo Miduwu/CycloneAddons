@@ -16,10 +16,10 @@ module.exports["data"] = {
    if(!mbot.bot) return await ctx.send({embeds: [new EmbedBuilder().setDescription("<:cyaddons_search:1082030058375491724> | ***`El bot no existe.`***").setColor(Auxiliar.Colors.red)], ephemeral: true}) 
   let embed = new EmbedBuilder()
       .setAuthor({name: mbot.username, iconURL: mbot.displayAvatarURL({size: 4096})})
-      .setTitle("<:cyaddons_dbidle:1220959205372989460> | Pendiente")
       .setThumbnail(mowner.displayAvatarURL({size: 4096}))
-      .setColor("FF00EE")
-      .addFields({name: "<:cyaddons_dbmember:1212222400163221514> | Propietario", value: `- ***\`${mowner.username}\`***`})
+      .setColor(Auxiliar.Colors.pink)
+      .setFooter({text: "El bot se encuentra pendiente.", iconURL: `https://i.imgur.com/IybEVW0.png`})
+      .addFields({name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `<:cyaddons_dbmember:1212222400163221514> | ***[${mowner.username}](https://discord.com/users/${mowner.id})***`})
       let row = new ActionRowBuilder()
       .addComponents(
       new ButtonBuilder().setLabel("Aceptar").setStyle(3).setCustomId(`accept_${mbot.id}`),
