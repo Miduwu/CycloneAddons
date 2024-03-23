@@ -13,7 +13,7 @@ module.exports["data"] = {
       let mbot = ctx.bot.users.cache.get(ctx.get("bot").user?.id) || await ctx.bot.users.fetch(ctx.get("bot").user?.id)
       let mowner = ctx.bot.users.cache.get(await db.get(`owner_${mbot.id}`)) || await ctx.bot.users.fetch(await db.get(`owner_${mbot.id}`))
    if(!mbot.bot) return await ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no existe.`***").setColor(Auxiliar.Colors.red)]}) 
-  if(!await db.has(`bot_${mbot.id}`)) return ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no está enlistado.`***").setColor(Auxiliar.Colors.red)]})
+  if(!await db.has(`botexists_${mbot.id}`)) return ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no está enlistado.`***").setColor(Auxiliar.Colors.red)]})
   let embed = new EmbedBuilder()
       .setAuthor({name: mbot.username, iconURL: mbot.displayAvatarURL({size: 4096})})
       .setTitle("<:cyaddons_dbidle:1220959205372989460> | Pendiente")
