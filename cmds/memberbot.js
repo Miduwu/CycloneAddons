@@ -1,7 +1,7 @@
 const { CommandBuilder, ParamsBuilder, EmbedBuilder, Context, ActionRowBuilder, ButtonBuilder } = require("erine");
 const { Database } = require("midb")
 const db = new Database();
-const { Auxiliar } = require("../../index")
+const { Auxiliar } = require("../index")
 module.exports["data"] = {
     data:  new CommandBuilder({
         name: "memberbot",
