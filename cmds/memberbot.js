@@ -10,7 +10,7 @@ module.exports["data"] = {
     params: new ParamsBuilder()
     .addMember({ name: "bot", description: "El bot en prueba que se verá.", required: true}),
     async code(ctx) {
-      let mbot = ctx.bot.users.cache.get(ctx.get("bot").user?.id) || await ctx.bot.users.fetch(ctx.get("bot").user.?id)
+      let mbot = ctx.bot.users.cache.get(ctx.get("bot").user?.id) || await ctx.bot.users.fetch(ctx.get("bot").user?.id)
       let mowner = ctx.bot.users.cache.get(await db.get(`owner_${mbot.id}`)) || await ctx.bot.users.fetch(await db.get(`owner_${mbot.id}`))
    if(!mbot.bot) return await ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no existe.`***").setColor(Auxiliar.Colors.red)]}) 
   if(!await db.has(`bot_${mbot.id}`)) return ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no está enlistado.`***").setColor(Auxiliar.Colors.red)]})
