@@ -9,6 +9,7 @@ const db = new Database({
 db.on("ready", () => {
     console.log("Database is ready.")
 })
+db.start()
 require('dotenv').config();
 
 const bot = new Erine({
