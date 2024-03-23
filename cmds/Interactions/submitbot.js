@@ -5,7 +5,8 @@ const { InteractionBuilder,
     ButtonBuilder
 } = require("erine");
 const { Auxiliar } = require("../../index");
-
+const { Database } = requiew("midb")
+const db = new Database();
 module.exports["data"] = {
     data: new InteractionBuilder({
         name: "ID_ADDBOT_MODAL",
@@ -19,6 +20,8 @@ module.exports["data"] = {
         if(!botUser?.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         let possibleMember = i.guild?.members?.cache?.get(botUser?.id)
         if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
+        await db.set(`botexists_${botUser.id}`, "true")
+        await db.set(`owner_${botUser.id}`, `${i.user?.id}`)
         const embed = new EmbedBuilder()
         .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild?.iconURL({size: 4096})}`})
         .setTitle(`<:cyaddons_dbmember:1212222400163221514> | Propietario`)
