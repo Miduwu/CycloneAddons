@@ -5,7 +5,7 @@ const { InteractionBuilder,
     ButtonBuilder
 } = require("erine");
 const { Auxiliar } = require("../../index");
-const { Database } = requiew("midb")
+const { Database } = require("midb")
 const db = new Database();
 module.exports["data"] = {
     data: new InteractionBuilder({
