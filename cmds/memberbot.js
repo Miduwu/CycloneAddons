@@ -15,7 +15,7 @@ module.exports["data"] = {
    if(!mbot.bot) return await ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no existe.`***").setColor(Auxiliar.Colors.red)]}) 
   if(!await db.has(`bot_${mbot.id}`)) return ctx.send({embeds: [new EmbedBuilder().setDescription("| ***`El bot no está enlistado.`***").setColor(Auxiliar.Colors.red)]})
   let embed = new EmbedBuilder()
-      .setAuthor({name: mbot.username, iconURL: mbot.displayAvatarURL({size: 4096}))
+      .setAuthor({name: mbot.username, iconURL: mbot.displayAvatarURL({size: 4096})})
       .setTitle("<:cyaddons_dbidle:1220959205372989460> | Pendiente")
       .setThumbnail(mowner.displayAvatarURL({size: 4096}))
       .setColor("FF00EE")
