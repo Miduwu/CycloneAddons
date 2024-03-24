@@ -21,15 +21,15 @@ module.exports["data"] = {
         .setLabel("Prefijo")
         .setPlaceholder("El prefijo del bot. (Pon \"/\" si usa Slash)")
         .setRequired(true)
-        .setStyle(TextInputStyle.Short);
-
+        .setStyle(TextInputStyle.Short)
+        .setMaxLength(10);
         const DESC_Input = new TextInputBuilder()
         .setCustomId("ID_DESC")
         .setLabel("Descripción")
-        .setPlaceholder("Características del bot, lenguaje/librería de programación, etc.")
+        .setPlaceholder("Características del bot, librería, lenguaje de programación, etc.")
         .setRequired(true)
         .setStyle(TextInputStyle.Paragraph)
-
+        .setMaxLength(1000)
         const [row1, row2, row3] = [new ActionRowBuilder().addComponents(ID_Input), new ActionRowBuilder().addComponents(PREFIX_Input), new ActionRowBuilder().addComponents(DESC_Input)]
 
         const modal = new ModalBuilder()
