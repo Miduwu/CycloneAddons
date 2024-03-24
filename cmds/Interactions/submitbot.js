@@ -24,13 +24,13 @@ module.exports["data"] = {
         await db.set(`owner_${botUser.id}`, `${i.user?.id}`)
         const embed = new EmbedBuilder()
         .setAuthor({name: "Se enlistó a un nuevo bot.", iconURL: `${i.guild?.iconURL({size: 4096})}`})
-        .setTitle(`<:cyaddons_dbmember:1212222400163221514> | Propietario`)
-        .setDescription(`- ***\`${i.user?.username}\`***`)
-        .setThumbnail(`${i.user.displayAvatarURL({size: 4096})}`)
+        .setDescription(`<:cyaddons_dbclock:1221320187333312542> | <t:${parseInt(Date.now() / 1000)}:R>`)
+        .setThumbnail(`${botUser.displayAvatarURL({size: 4096})}`)
         .setColor("FF00EE")
+        .setTitle(`${botUser.username}`)
+        .setURL(`https://discord.com/users/${botUser.id}`)
         .setFooter({text: `${botUser?.username}`, iconURL: `${botUser?.displayAvatarURL({size: 4096})}`})
-        .addFields({ name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: i.fields.getTextInputValue("ID_PREFIX")})
-        .addFields({ name: "<:cyaddons_dbinfo:1207745246331666442> | Descripción", value:  i.fields.getTextInputValue("ID_DESC") });
+        .setFields({ name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `- [${i.user?.username}](https://discord.com/users/${i.user?.id}/) (\`${i.user?.id}\`)`},{name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: `\`i.fields.getTextInputValue("ID_PREFIX")\``},{name: "<:cyaddons_dbmessage:1217257122031472640> | Descripción", value: `${i.fields.getTextInputValue("ID_DESC")}`})
         
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
