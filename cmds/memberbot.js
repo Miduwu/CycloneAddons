@@ -19,7 +19,7 @@ module.exports["data"] = {
       .setThumbnail(mowner.displayAvatarURL({size: 4096}))
       .setColor(Auxiliar.Colors.pink)
       .setFooter({text: "El bot se encuentra pendiente.", iconURL: `https://i.imgur.com/IybEVW0.png`})
-      .addFields({name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `<:cyaddons_dbmember:1212222400163221514> | ***[${mowner.username}](https://discord.com/users/${mowner.id})***`})
+      .addFields({name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `- **[${mowner.username}](https://discord.com/users/${mowner.id})** (\`${mowner.id}\`)`})
       let row = new ActionRowBuilder()
       .addComponents(
       new ButtonBuilder().setLabel("Aceptar").setStyle(3).setCustomId(`accept_${mbot.id}`),
