@@ -29,7 +29,7 @@ module.exports["data"] = {
         .setColor("FF00EE")
         .setTitle(`${botUser.username}`)
         .setURL(`https://discord.com/users/${botUser.id}`)
-        .setFields({ name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `- [${i.user?.username}](https://discord.com/users/${i.user?.id}/) (\`${i.user?.id}\`)`},{name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: `\`${i.fields.getTextInputValue("ID_PREFIX")}\``},{name: "<:cyaddons_dbmessage:1217257122031472640> | Descripción", value: `${i.fields.getTextInputValue("ID_DESC")}`})
+        .setFields({ name: "<:cyaddons_dbowner:1221172734336303192> | Propietario", value: `- [${i.user?.username}](https://discord.com/users/${i.user?.id}/) (\`${i.user?.id}\`)`},{name: "<:cyaddons_dbplus:1216132261351522324> | Prefijo",  value: `\`${i.fields.getTextInputValue("ID_PREFIX")}\``},{name: "<:cyaddons_dbmessage:1217257122031472640> | Descripción", value: `${i.fields.getTextInputValue("ID_DESC")}` || "`(Nada Adjunto)`"})
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
             .setLabel("Invitar Al Servidor")
