@@ -33,7 +33,7 @@ async code(interaction) {
                 .setPlaceholder("Selecciona Una Mención")
       .addOptions(new StringSelectMenuOptionBuilder().setLabel("Anuncios").setValue(roles.Anuncios).setEmoji("<:cyaddons_dbannouncement:1208616564614635570>"),
 new StringSelectMenuOptionBuilder().setLabel("Alianzas").setValue(roles.Alianzas).setEmoji("<:cyaddons_dballiance:1208616603411939379>"),
-new StringSelectMenuOptionBuilder().setLabel("Revivir Chat").setValue(roles.Revive).setEmoji("<:cyaddons_dbmessage:1208616584919253053>")))
+new StringSelectMenuOptionBuilder().setLabel("Revivir Chat").setValue(roles.Revive).setEmoji("<:cyaddons_dbmessage:1217257122031472640>")))
 let embed = new EmbedBuilder()
 .setTitle("<:cyaddons_dbping:1221507911050854470> | Menciones")
 .setDescription("<:cyaddons_dbinfo:1207745246331666442> | ***`Selecciona una mención para evitar el uso de @everyone.`***")
