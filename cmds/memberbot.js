@@ -5,7 +5,7 @@ const { Auxiliar } = require("../index")
 module.exports["data"] = {
     data:  new CommandBuilder({
         name: "memberbot",
-        description:  "Evalúa un código de JavaScript.",
+        description:  "Muestra la información de un bot enlistado.",
     }),
     params: new ParamsBuilder()
     .addMember({ name: "bot", description: "El bot en prueba que se verá.", required: true}),
