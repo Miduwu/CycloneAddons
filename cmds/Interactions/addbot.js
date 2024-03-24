@@ -27,7 +27,7 @@ module.exports["data"] = {
         .setCustomId("ID_DESC")
         .setLabel("Descripción")
         .setPlaceholder("Características del bot, librería, lenguaje de programación, etc.")
-        .setRequired(true)
+        .setRequired(false)
         .setStyle(TextInputStyle.Paragraph)
         .setMaxLength(1000)
         const [row1, row2, row3] = [new ActionRowBuilder().addComponents(ID_Input), new ActionRowBuilder().addComponents(PREFIX_Input), new ActionRowBuilder().addComponents(DESC_Input)]
