@@ -52,7 +52,7 @@ bot.on("interactionCreate", async i => {
         let dbc = i.bot.channels.cache.get("965406995849052160") || await i.bot.channels.fetch("965406995849052160")
         let aowner = i.bot.users.cache.get(db.get(`owner_${acceptedbot.id}`)) || await i.bot.users.fetch(db.get(`owner_${acceptedbot.id}`))
         let embed = new EmbedBuilder()
-        .setAuthor({name: abot.username, abot.displayAvatarURL({size: 4096})})
+        .setAuthor({name: abot.username, iconURL: abot.displayAvatarURL({size: 4096})})
         .setTitle("<:cyaddons_plus:1057545930443870208> | Comentarios Extra")
         .setDescription(i.fields.getField("comments").value)
         .setImage(abot.displayAvatarURL({size: 4096}))
