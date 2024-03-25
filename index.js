@@ -23,32 +23,10 @@ const bot = new Erine({
         activities: [{ type: ActivityType.Playing, name: "Cyclone Addons | ErineClient" }]
     }
 })
-
 const Auxiliar = new Utils()
-
 // Commands & Events Handler
 bot.load("./cmds")
-
 bot.login(process.env.TOKEN)
-
-bot.on("interactionCreate", async i => {
-    if(!i.isButton()) return;
-    if(i.customId?.split("_")[0] == "accept") {
-       let botid = i.customId?.split("_")[1]
-        const commentinput = new TextInputBuilder()
-        .setCustomId("comments")
-        .setLabel("Comentarios")
-        .setPlaceholder("Deja cualquier comentario extra acerca del bot.")
-        .setRequired(false)
-        .setStyle(TextInputStyle.Paragraph)
-        const modal = new ModalBuilder()
-        .setTitle("Aceptar Bot")
-        .setCustomId(`ACCEPT_${botid}`)
-        .addComponents(new ActionRowBuilder().addComponents(commentinput))
-        i.showModal(modal).catch(console.log)
-    }
-})
-
 module.exports = {
     bot,
     Auxiliar
