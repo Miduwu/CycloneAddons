@@ -1,4 +1,4 @@
-const { Erine, ActivityType } = require("erine");
+const { Erine, ActivityType, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("erine");
 const { Utils } = require("./addons/utils")
 const { Database } = require("midb")
 const { CustomHelpCommand } = require("./addons/help")
@@ -34,7 +34,18 @@ bot.login(process.env.TOKEN)
 bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
-       await i.reply("hola")
+       let botid = i.customId?.split("_")[1]
+        const commentinput = new TextInputBuilder()
+        .setCustomId("comments")
+        .setLabel("Comentarios")
+        .setPlaceholder("Deja cualquier comentario extra acerca del bot que se aceptará.")
+        .setRequired(false)
+        .setStyle(TextInputStyle.Paragraph)
+        const modal = new ModalBuilder()
+        .setTitle("Aceptar Bot")
+        .setCustomId(`ACCEPT_${botid}`)
+        .addComponents(new ActionRowBuilder().addComponents(commentinput))
+        i.showModal(modal).catch(console.log)
     }
 })
 
