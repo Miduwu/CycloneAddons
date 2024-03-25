@@ -1,4 +1,4 @@
-const { Erine, ActivityType, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("erine");
+const { Erine, EmbedBuilder, ActivityType, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("erine");
 const { Utils } = require("./addons/utils")
 const { Database } = require("midb")
 const { CustomHelpCommand } = require("./addons/help")
@@ -11,7 +11,6 @@ db.on("ready", () => {
 })
 db.start()
 require('dotenv').config();
-
 const bot = new Erine({
     prefix: "dank!",
     owners: ["914541839774801990", "664261902712438784"],
@@ -23,10 +22,16 @@ const bot = new Erine({
         activities: [{ type: ActivityType.Playing, name: "Cyclone Addons | ErineClient" }]
     }
 })
+const Auxiliar = new Utils()
+module.exports = {
+    bot,
+    Auxiliar
+}
+
 bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
-       let botid = i.customId?.split("_")[1]
+        let botid = i.customId?.split("_")[1]
         const commentinput = new TextInputBuilder()
         .setCustomId("comments")
         .setLabel("Comentarios")
@@ -40,12 +45,23 @@ bot.on("interactionCreate", async i => {
         i.showModal(modal).catch(console.log)
     }
 })
-
-const Auxiliar = new Utils()
+bot.on("interactionCreate", async i => {
+    if(!i.isModalSubmit()) return;
+    if(i.customId.split("_")[0] == "ACCEPT") {
+        let abot = i.bot.users.cache.get(`${i.customId.split("_")[1]}`) || await i.bot.users.fetch(`${i.customId.split("_")[1]}`)
+        let dbc = i.bot.channels.cache.get("965406995849052160") || await i.bot.channels.fetch("965406995849052160")
+        let aowner = i.bot.users.cache.get(db.get(`owner_${acceptedbot.id}`)) || await i.bot.users.fetch(db.get(`owner_${acceptedbot.id}`))
+        let embed = new EmbedBuilder()
+        .setAuthor({name: abot.username, abot.displayAvatarURL({size: 4096})
+        .setTitle("<:cyaddons_plus:1057545930443870208> | Comentarios Extra")
+        .setDescription(i.fields.getField("comments").value)
+        .setImage(abot.displayAvatarURL({size: 4096}))
+        .setColor(Auxiliar.Colors.cyan)
+        .setFooter({text: i.user.username, iconURL: i.user.displayAvatarURL({size: 4096})})
+        await i.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_check:1060662306507333753> | ***`El bot fue aceptado.`***").setColor(Auxiliar.Colors.cyan)], ephemeral: true})
+        dbc.send({content: `<@${aowner.id}>`, embeds: [embed]})
+    }
+})
 // Commands & Events Handler
 bot.load("./cmds")
 bot.login(process.env.TOKEN)
-module.exports = {
-    bot,
-    Auxiliar
-}
