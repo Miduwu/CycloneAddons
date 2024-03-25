@@ -1,7 +1,7 @@
 const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("erine")
 const event = {
   name: "interactionCreate",
-  async code(i) {
+  async code(client, i) {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
        let botid = i.customId?.split("_")[1]
