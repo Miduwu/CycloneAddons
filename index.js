@@ -38,7 +38,7 @@ bot.on("interactionCreate", async i => {
         const commentinput = new TextInputBuilder()
         .setCustomId("comments")
         .setLabel("Comentarios")
-        .setPlaceholder("Deja cualquier comentario extra acerca del bot que se aceptará.")
+        .setPlaceholder("Deja cualquier comentario extra acerca del bot.")
         .setRequired(false)
         .setStyle(TextInputStyle.Paragraph)
         const modal = new ModalBuilder()
