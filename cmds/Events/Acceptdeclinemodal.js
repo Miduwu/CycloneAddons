@@ -17,5 +17,6 @@ const event = {
         .addComponents(new ActionRowBuilder().addComponents(commentinput))
         i.showModal(modal).catch(console.log)
     }
-})
+}
+}
 module.exports = { data: event }
