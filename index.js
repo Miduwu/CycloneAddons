@@ -48,16 +48,16 @@ bot.on("interactionCreate", async i => {
 bot.on("interactionCreate", async i => {
     if(!i.isModalSubmit()) return;
     if(i.customId.split("_")[0] == "ACCEPT") {
-        let abot = i.client?.users?.cache?.get(`${i.customId.split("_")[1]}`) || await i.client?.users?.fetch(`${i.customId.split("_")[1]}`)
-        let dbc = i.client?.channels?.cache?.get("965406995849052160") || await i.client?.channels?.fetch("965406995849052160")
-        let aowner = i.client?.users?.cache?.get(db.get(`owner_${abot.id}`)) || await i.client?.users?.fetch(db.get(`owner_${abot.id}`))
+        let abot = i.client?.users?.cache?.get(`${i.customId.split("_")[1]}`) || await i.client?.users?.fetch(`${i.customId.split("_")[1]}`).catch(e=>null)
+        let dbc = i.client?.channels?.cache?.get("965406995849052160") || await i.client?.channels?.fetch("965406995849052160").catch(e=>null)
+        let aowner = i.client?.users?.cache?.get(db.get(`owner_${abot.id}`)) || await i.client?.users?.fetch(db.get(`owner_${abot.id}`)).catch(e=>null)
         let embed = new EmbedBuilder()
         .setAuthor({name: abot.username, iconURL: abot.displayAvatarURL({size: 4096})})
         .setTitle("<:cyaddons_plus:1057545930443870208> | Comentarios Extra")
         .setDescription(i.fields.getField("comments").value)
         .setImage(abot.displayAvatarURL({size: 4096}))
         .setColor(Auxiliar.Colors.cyan)
-        .setFooter({text: i.user.username, iconURL: i.user.displayAvatarURL({size: 4096})})
+        .setFooter({text: i.user?.username, iconURL: i.user?.displayAvatarURL({size: 4096})})
         await i.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_check:1060662306507333753> | ***`El bot fue aceptado.`***").setColor(Auxiliar.Colors.cyan)], ephemeral: true})
         dbc.send({content: `<@${aowner.id}>`, embeds: [embed]})
     }
