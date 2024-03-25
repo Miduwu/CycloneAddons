@@ -31,6 +31,13 @@ bot.load("./cmds")
 
 bot.login(process.env.TOKEN)
 
+bot.on("interactionCreate", async i => {
+    if(!i.isButton()) return;
+    if(i.customId?.split("_")[0] == "accept") {
+       await i.reply("hola")
+    }
+})
+
 module.exports = {
     bot,
     Auxiliar
