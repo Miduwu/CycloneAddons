@@ -32,6 +32,7 @@ bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
         let botid = i.customId?.split("_")[1]
+        if(!db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const commentinput = new TextInputBuilder()
         .setCustomId("comments")
         .setLabel("Comentarios")
@@ -63,23 +64,24 @@ bot.on("interactionCreate", async i => {
         .setImage(abot.displayAvatarURL({size: 4096}))
         .setColor(Auxiliar.Colors.cyan)
         .setFooter({text: i.user?.username, iconURL: i.user?.displayAvatarURL({size: 4096})})
-        await i.update({embeds: [new EmbedBuilder().setDescription("<:cyaddons_check:1060662306507333753> | ***`El bot fue aceptado.`***").setColor(Auxiliar.Colors.cyan)], components: [], ephemeral: true})
+        await i.update({embeds: [new EmbedBuilder().setDescription("<:cyaddons_check:1060662306507333753> | ***`El bot fue aceptado.`***").setColor(Auxiliar.Colors.cyan)], components: []})
         memberbot.roles.add(roles.one)
         memberbot.roles.remove(roles.two)
         dbc.send({content: `<@${aowner?.id}>`, embeds: [embed]})
-        await db.delete(`owner_${abot.id}`)
-        await db.delete(`botexists_${abot.id}`)
+        await db.delete(`owner_${abot?.id}`)
+        await db.delete(`botexists_${abot?.id}`)
     }
 })
 bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "decline") {
         let botid = i.customId?.split("_")[1]
+        if(!db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const reasoninput = new TextInputBuilder()
         .setCustomId("reason")
         .setLabel("Motivo")
         .setPlaceholder("Comenta el motivo de la declinación o los errores del bot.")
-        .setRequired(false)
+        .setRequired(true)
         .setStyle(TextInputStyle.Paragraph)
         const modal = new ModalBuilder()
         .setTitle("Declinar Bot")
@@ -102,11 +104,11 @@ bot.on("interactionCreate", async i => {
         .setImage(dbot.displayAvatarURL({size: 4096}))
         .setColor(Auxiliar.Colors.red)
         .setFooter({text: i.user?.username, iconURL: i.user?.displayAvatarURL({size: 4096})})
-        await i.update({embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot fue declinado.`***").setColor(Auxiliar.Colors.red)], components: [], ephemeral: true})
+        await i.update({embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot fue declinado.`***").setColor(Auxiliar.Colors.red)], components: []})
         memberbot.kick()
         dbc.send({content: `<@${downer?.id}>`, embeds: [embed]})
-        await db.delete(`owner_${abot.id}`)
-        await db.delete(`botexists_${abot.id}`)
+        await db.delete(`owner_${dbot?.id}`)
+        await db.delete(`botexists_${dbot?.id}`)
     }
 })
 // Commands & Events Handler
