@@ -1,13 +1,14 @@
 const { Erine, EmbedBuilder, ActivityType, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder } = require("erine");
 const { Utils } = require("./addons/utils")
 const { Database } = require("midb")
+const colors = require("colors/safe")
 const { CustomHelpCommand } = require("./addons/help")
 const db = new Database({
     path: "./database",
     tables: ["main"]
 })
 db.on("ready", () => {
-    console.log("Database is ready.")
+    console.log(colors.green("Starting Database"), "||", colors.green("Midb"))
 })
 db.start()
 require('dotenv').config();
