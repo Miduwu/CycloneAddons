@@ -59,7 +59,7 @@ bot.on("interactionCreate", async i => {
         .setColor(Auxiliar.Colors.cyan)
         .setFooter({text: i.user?.username, iconURL: i.user?.displayAvatarURL({size: 4096})})
         await i.reply({embeds: [new EmbedBuilder().setDescription("<:cyaddons_check:1060662306507333753> | ***`El bot fue aceptado.`***").setColor(Auxiliar.Colors.cyan)], ephemeral: true})
-        dbc.send({content: `<@${aowner.id}>`, embeds: [embed]})
+        dbc.send({content: `<@${aowner?.id}>`, embeds: [embed]})
     }
 })
 // Commands & Events Handler
