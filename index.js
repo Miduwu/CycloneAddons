@@ -33,7 +33,7 @@ bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
         let botid = i.customId?.split("_")[1]
-        if(!db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
+        if(!await db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const commentinput = new TextInputBuilder()
         .setCustomId("comments")
         .setLabel("Comentarios")
@@ -77,7 +77,7 @@ bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "decline") {
         let botid = i.customId?.split("_")[1]
-        if(!db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
+        if(!await db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const reasoninput = new TextInputBuilder()
         .setCustomId("reason")
         .setLabel("Motivo")
