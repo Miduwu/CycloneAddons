@@ -33,6 +33,7 @@ bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "accept") {
         let botid = i.customId?.split("_")[1]
+        if(!i.member.roles.cache.has("965470652079407134" || "926786441676214272" || "926786432775901254" || "926523991617851442" || "917167172978114652" || "917166778856120330" || "917440974609870930" || "1208914328942551101") return ctx.send({embeds: [new EmbedBuilder().setDescription("<:cyaddons_warning:1222012389575102514> | ***`No posees un rol para esta acción.`***").setColor(Auxiliar.Colors.red)], ephemeral: true})
         if(!await db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const commentinput = new TextInputBuilder()
         .setCustomId("comments")
@@ -77,6 +78,7 @@ bot.on("interactionCreate", async i => {
     if(!i.isButton()) return;
     if(i.customId?.split("_")[0] == "decline") {
         let botid = i.customId?.split("_")[1]
+        if(!i.member.roles.cache.has("965470652079407134" || "926786441676214272" || "926786432775901254" || "926523991617851442" || "917167172978114652" || "917166778856120330" || "917440974609870930" || "1208914328942551101") return ctx.send({embeds: [new EmbedBuilder().setDescription("<:cyaddons_warning:1222012389575102514> | ***`No posees un rol para esta acción.`***").setColor(Auxiliar.Colors.red)], ephemeral: true})
         if(!await db.has(`botexists_${botid}`)) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_dberror:1221503917091717182> | ***`El bot no está enlistado.`***").setColor("FF00EE")], ephemeral: true })
         const reasoninput = new TextInputBuilder()
         .setCustomId("reason")
