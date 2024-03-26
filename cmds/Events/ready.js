@@ -1,5 +1,5 @@
 const { EventBuilder, Erine } = require("erine");
-
+const colors = require("colors/safe")
 module.exports["data"] = {
     data: new EventBuilder({
         name: "ready",
@@ -9,7 +9,7 @@ module.exports["data"] = {
      * @param {Erine} client 
      */
     async code(client) {
-        console.log(`${client.user.displayName} is online!`)
-        await client.sync().then(() => console.log("Commands uploaded"))
+        console.log(colors.cyan("Starting On"), colors.blue("ErineClient"), "||", colors.red(`${client.user.displayName}`))
+        await client.sync().then(() => console.log("[/] Commands Uploaded"))
     }
 }
