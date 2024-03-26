@@ -17,6 +17,7 @@ module.exports["data"] = {
         const addbotchannel = i?.client?.channels?.cache?.get("1206725863757058059") || await i.client?.channels?.fetch("1206725863757058059").catch(e=>null)
         const botUser = i.client?.users?.cache?.get(botId) || await i.client?.users?.fetch(botId).catch(e=>null)
         //console.log(`${botUser?.bot}, ${i.getTextInputValue("ID_ID")}`)
+        if(await db.has(`botexists_${botId}`) == true) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está enlistado.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         if(!botUser?.bot) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El usuario no es un bot.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
         let possibleMember = i.guild?.members?.cache?.get(botUser?.id)
         if(possibleMember) return i.reply({ embeds: [new EmbedBuilder().setDescription("<:cyaddons_error:1060665620468863096> | ***`El bot ya está unido al servidor.`***").setColor(Auxiliar.Colors.red)], ephemeral: true })
